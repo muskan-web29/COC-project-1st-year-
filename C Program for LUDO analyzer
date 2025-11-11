@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+//Function to roll one die
+int roll_die(){
+return(rand()%6)+1;//Returns 1 to 6
+}
+int main(){
+int num_rolls=1000000;//Number of tosses
+int counts[13]={0};//Indx 2 to 12 used for sum storage
+
+//Set random seed
+srand(time(NULL));
+//Simulate dice rolls
+for (int i=0; i< num_rolls; i++){
+int die1= roll_die();
+int die2= roll+die();
+int sum= die1 + die2;
+counts[sum]++;//Increases counter for that sum
+}
+
+//Print probability distribution
+printf("Sum\tCount\tProbability\n");
+for(int sum=2; sum<=12; sum++){
+double probability = (double)counts[sum]/num_rolls*100;
+printf("%d\t%d\t%.2lf%%\n", sum,counts[sum],probability);
+}
+return 0;
+}
